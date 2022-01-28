@@ -3,6 +3,13 @@ string chest = "";
 string belly = "";
 string legs = "";
 
+string lang = "en";
+string welcomeMessage = "";
+string inputLetterMessage = "";
+string alreadyTriedCharacterMessage = "";
+string endGameMessage = "";
+string triedCharactersDisplayMessage = "";
+
 int actualWordIndex = 0;
 List<Char> triedCharacters = new List<Char>();
 List<Char> correctCharacters = new List<Char>();
@@ -12,10 +19,29 @@ bool endOfGame = false;
 bool nextWord = false;
 
 Console.Clear();
+    
+Console.Write("Escolha sua língua / Choose your language: ");
+lang = Console.ReadLine() ?? "en";
 
-Console.WriteLine("Bem vindo ao jogo da Forca!\n" +
-                  "Aperte qualquer tecla pra começar..."
-);
+switch (lang) {
+    case "pt":
+        welcomeMessage = "Bem vindo ao jogo da Forca!\n" + "Aperte qualquer tecla pra começar...";
+        inputLetterMessage = "Entre com uma letra: ";
+        alreadyTriedCharacterMessage = "Você já tentou essa letra, tente outra!";
+        endGameMessage = "Fim do jogo.\n" + "Muito obrigado por jogar!";
+        triedCharactersDisplayMessage = "Caracteres Tentados: ";
+        break;
+    case "en":
+        welcomeMessage = "Welcome to Hangman Game!\n" + "Press any key to begin...";
+        inputLetterMessage = "Enter a character: ";
+        alreadyTriedCharacterMessage = "You already tried this character, try another one!";
+        endGameMessage = "End of game.\n" + "Thank you for playing!";
+        triedCharactersDisplayMessage = "Tried Characters: ";
+        break;
+}
+
+Console.Clear();
+Console.WriteLine(welcomeMessage);
 
 Console.ReadLine();
 
@@ -26,11 +52,11 @@ do
     nextWord = false;
 
     Console.WriteLine(DrawHangman(head, chest, belly, legs));
-    writeWordGame(listOfWords[actualWordIndex], triedCharacters, correctCharacters);
+    writeWordGame(listOfWords[actualWordIndex], triedCharacters, correctCharacters, triedCharactersDisplayMessage);
 
     do
     {
-        Console.Write("Entre com uma letra: ");
+        Console.Write(inputLetterMessage);
         Char.TryParse(Console.ReadLine(), out char test);
 
         if (test == '#')
@@ -70,7 +96,7 @@ do
             }
             else
             {
-                Console.WriteLine("Você já tentou essa letra, tente outra!");
+                Console.WriteLine(alreadyTriedCharacterMessage);
             }
         }
     } while (!newLetter);
@@ -108,9 +134,7 @@ do
 
 
 Console.Clear();
-Console.WriteLine("Fim do jogo.\n" +
-                  "Muito obrigado por jogar!"
-);
+Console.WriteLine(endGameMessage);
 
 // functions 
 
@@ -138,9 +162,9 @@ static string DrawHangman(string head, string chest, string belly, string legs)
  *   Return: 
  *      nothing (void).
  */
-static void writeWordGame(String word, List<Char> listTriedChars, List<Char> listCorrectChars)
+static void writeWordGame(String word, List<Char> listTriedChars, List<Char> listCorrectChars, string triedCharMessage)
 {
-    Console.WriteLine("\n--------------- O JOGO ---------------");
+    Console.WriteLine("\n--------------------------------------");
 
     Console.Write("\n\t");
 
@@ -162,7 +186,7 @@ static void writeWordGame(String word, List<Char> listTriedChars, List<Char> lis
 
     }
 
-    Console.Write("\n\nCaracteres Tentados: ");
+    Console.Write("\n\n" + triedCharMessage);
 
     for (int i = 0; i < listTriedChars.Count; i++)
     {
