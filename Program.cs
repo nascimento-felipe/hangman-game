@@ -11,6 +11,8 @@ bool newLetter = false;
 bool endOfGame = false;
 bool nextWord = false;
 
+Console.Clear();
+
 Console.WriteLine("Bem vindo ao jogo da Forca!\n" +
                   "Aperte qualquer tecla pra começar..."
 );
