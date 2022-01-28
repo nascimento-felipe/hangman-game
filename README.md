@@ -10,6 +10,12 @@
 
 - Helpful Info: if you want to end the game without playing until the next word, just input the '#' character.
 
+## How to use
+
+First of all, you need the .Net 6.0 Runtime installed. You can download and install it in the [.Net website](https://dotnet.microsoft.com/en-us/).
+
+Once you have the runtime installed, just clone the repository and navigate to the "/hangman_game" folder, then run the "dotnet run" command.
+
 ## Game images
 
 ![game welcome screen](public/hangman_game_welcome.png)
