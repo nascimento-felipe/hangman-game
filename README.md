@@ -16,6 +16,14 @@ First of all, you need the .Net 6.0 Runtime installed. You can download and inst
 
 Once you have the runtime installed, just clone the repository and navigate to the "/hangman_game" folder, then run the "dotnet run" command.
 
+## Game's Rules and functionalities
+
+- Words: I put 3 words in portuguese for now, but you can easily change they, just search for the variable ```listOfWords```, an array of strings.
+
+- After you win the word, both the hangman and tried characters are reset.
+
+- The hangman has 4 body parts, so you can guess a maximum of 4 wrong characters :p
+
 ## Game images
 
 ![game welcome screen](public/hangman_game_welcome.png)
